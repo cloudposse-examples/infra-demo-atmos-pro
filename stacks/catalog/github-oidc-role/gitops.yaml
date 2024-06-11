@@ -1,0 +1,25 @@
+import:
+  - catalog/github-oidc-role/defaults
+
+components:
+  terraform:
+    github-oidc-role/gitops:
+      settings:
+        github:
+          actions_enabled: false
+      metadata:
+        component: github-oidc-role
+        inherits:
+          - github-oidc-role/defaults
+      vars:
+        enabled: true
+        github_actions_allowed_repos:
+          - "cloudposse-examples/infra-demo-atmos"
+        attributes: [ "gitops" ]
+        iam_policies:
+          - gitops
+        gitops_policy_configuration:
+          s3_bucket_component_name: gitops/s3-bucket
+          dynamodb_component_name: gitops/dynamodb
+          s3_bucket_environment_name: use2
+          dynamodb_environment_name: use2

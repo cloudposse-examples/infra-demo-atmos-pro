@@ -1,0 +1,4 @@
+# This file is for vars only; do not import components here
+# For more information, see "Mixins and Imports with Atmos" in the [baseline documentation](../docs/setup/00-baseline.yaml)
+vars:
+  stage: dev

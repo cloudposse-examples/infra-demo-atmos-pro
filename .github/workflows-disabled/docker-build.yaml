@@ -1,0 +1,95 @@
+on:
+  workflow_dispatch:
+
+  pull_request:
+    paths:
+    - "**/**/Dockerfile"
+    - ".github/workflows/docker-build.yaml"
+    - ".spacelift/**"
+    - "rootfs/**"
+
+  push:
+    branches:
+    - main
+    paths:
+    - "**/**/Dockerfile"
+    - ".github/workflows/docker-build.yaml"
+    - ".spacelift/**"
+    - "rootfs/**"
+
+  release:
+    types: [published]
+
+permissions:
+  id-token: write # This is required for requesting the JWT enabling AWS authentication
+  contents: read  # This is required for actions/checkout
+
+name: docker
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY_PREFIX: cloudposse-examples
+  ECR_REGISTRY: __ARTIFACTS_ACCOUNT_NUMBER__.dkr.ecr.us-east-1.amazonaws.com
+  GHA_IAM_ROLE: arn:aws:iam::__ARTIFACTS_ACCOUNT_NUMBER__:role/atmos-core-use1-artifacts-ecr-gha
+
+jobs:
+  dockerfiles:
+    runs-on: ["self-hosted", "default"]
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.docker-repos }}
+    steps:
+      - uses: actions/checkout@v2
+      - id: set-matrix
+        run: |
+          echo "$(ls components/docker/*/Dockerfile | awk -F '/' '{ print $4}' | jq -R -s -c 'split("\n")[:-1]')"
+          echo "docker-repos=$(ls components/docker/*/Dockerfile | awk -F '/' '{ print $3}' | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+        # outputs `["actions-runner-dind","actions-runner", "infrastructure"]` for example
+
+  build-and-push:
+    needs: dockerfiles
+    runs-on: ["self-hosted", "default"]
+    name: Build
+    strategy:
+      fail-fast: true
+      matrix:
+        docker-repos: ${{ fromJson(needs.dockerfiles.outputs.matrix) }}
+    steps:
+      - name: Get GitHub Default Branch
+        id: github
+        run: |
+          default_branch=$(curl --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' -fsSL https://api.github.com/repos/${{ github.repository }} | jq -r .default_branch)
+          echo "Discovered default branch of '$default_branch' for ${{ github.repository }}"
+          echo "default_branch=$default_branch" >> $GITHUB_OUTPUT
+
+      - name: Compute Docker Tag
+        id: docker
+        run: |
+          tag="undefined"
+          if [[ '${{ github.event_name }}' == 'release' ]]; then
+              RELEASE_REF=${{ github.ref }}
+              tag="${RELEASE_REF#refs/tags/}"
+          elif [[ '${{ github.ref }}' == 'refs/heads/${{ steps.github.outputs.default_branch }}' ]]; then
+              tag="${{ github.sha }}"
+          else
+              tag="${{ github.event.pull_request.head.sha }}"
+          fi
+          echo "tag=$tag"
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials for ECR
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.GHA_IAM_ROLE }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Build with cloudposse docker-build-push
+        uses: cloudposse/github-action-docker-build-push@main
+        with:
+          registry: ${{ env.ECR_REGISTRY }}
+          organization: "${{ github.event.repository.owner.login }}"
+          repository: "${{ matrix.docker-repos }}"
+          file: "components/docker/${{ matrix.docker-repos }}/Dockerfile"
+          platforms: linux/amd64,linux/arm64

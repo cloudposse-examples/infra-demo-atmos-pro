@@ -1,0 +1,5 @@
+# https://github.com/crate-ci/typos
+
+[default.extend-words] # Don't correct
+ue = "ue" # environment name
+Hashi = "Hashi"

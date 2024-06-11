@@ -1,0 +1,53 @@
+import:
+  - catalog/s3-bucket/defaults
+  - catalog/dynamodb/defaults
+  - catalog/github-oidc-role/gitops
+
+components:
+  terraform:
+    # S3 Bucket for storing Terraform Plans
+    gitops/s3-bucket:
+      settings:
+        github:
+          actions_enabled: false
+      metadata:
+        component: s3-bucket
+        inherits:
+          - s3-bucket/defaults
+      vars:
+        name: gitops-plan-storage
+        allow_encrypted_uploads_only: false
+
+    # DynamoDB table used to store metadata for Terraform Plans
+    gitops/dynamodb:
+      settings:
+        github:
+          actions_enabled: false
+      metadata:
+        component: dynamodb
+        inherits:
+          - dynamodb/defaults
+      vars:
+        name: gitops-plan-storage
+        # This key (case-sensitive) is required for the cloudposse/github-action-terraform-plan-storage action
+        hash_key: id
+        range_key: ""
+        # Only these 2 attributes are required for creating the GSI,
+        # but there will be several other attributes on the table itself
+        dynamodb_attributes:
+          - name: 'createdAt'
+            type: 'S'
+          - name: 'pr'
+            type: 'N'
+        # This GSI is used to Query the latest plan file for a given PR.
+        global_secondary_index_map:
+          - name: pr-createdAt-index
+            hash_key: pr
+            range_key: createdAt
+            projection_type: ALL
+            non_key_attributes: []
+            read_capacity: null
+            write_capacity: null
+        # Auto delete old entries
+        ttl_enabled: true
+        ttl_attribute: ttl

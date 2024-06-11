@@ -1,0 +1,10 @@
+components:
+  terraform:
+    github-oidc-role/defaults:
+      metadata:
+        type: abstract
+      vars:
+        enabled: true
+        name: gha-iam
+        github_actions_allowed_repos:
+         - cloudposse-examples/* ## allow all repos in MyOrg

@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.75.0
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_docs
+        args: ["--args=--lockfile=false"]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.7.1
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: prettier --write --prose-wrap always --print-width 120
+        types: ["markdown"]
+        # exclude files such as components/terraform/account/README.md, which are modified by terraform_docs
+        exclude: (components\/terraform\/*README)\.md
+  - repo: local
+    hooks:
+      - id: rebuild-adr-docs
+        name: rebuild-adr-docs
+        entry: bash -c 'make rebuild-adr-docs'
+        language: system
+        types: ["markdown"]
+        files: docs\/adr\/.*md
+        pass_filenames: false

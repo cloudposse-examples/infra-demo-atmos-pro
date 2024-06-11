@@ -1,0 +1,12 @@
+# Disable mergify in this repository
+# https://docs.mergify.io/configuration/#disable-mergify
+# https://dashboard.mergify.com/github/cloudposse/repo/refarch-scaffold/queues
+pull_request_rules:
+- name: Automatic merge on approval
+  disabled:
+    reason: "Not applicable to this repository"
+  conditions:
+  - "#approved-reviews-by>=1"
+  actions:
+    merge:
+      method: merge

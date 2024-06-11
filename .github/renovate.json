@@ -1,0 +1,6 @@
+{
+  "prConcurrentLimit": 5,
+  "extends": [
+    "config:base"
+  ]
+}

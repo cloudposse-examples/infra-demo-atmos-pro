@@ -1,0 +1,7 @@
+import:
+  - orgs/ex1/_defaults
+
+vars:
+  tenant: core
+
+

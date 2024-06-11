@@ -1,0 +1,3 @@
+import:
+  - orgs/ex1/plat/staging/_defaults
+  - mixins/region/us-east-2

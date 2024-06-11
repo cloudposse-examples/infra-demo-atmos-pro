@@ -1,0 +1,4 @@
+import:
+  - orgs/ex1/plat/prod/_defaults
+  - mixins/region/global-region
+  - catalog/account-settings
