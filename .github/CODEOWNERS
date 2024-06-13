@@ -4,5 +4,5 @@
 # Order is important: the last matching pattern has the highest precedence
 
 # These owners will be the default owners for everything
-# *  @cloudposse-examples/devops @cloudposse-examples/cloudposse
+*  @cloudposse-examples/admins @cloudposse-examples/engineering
 
