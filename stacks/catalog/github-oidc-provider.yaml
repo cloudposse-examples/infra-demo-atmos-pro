@@ -1,0 +1,5 @@
+components:
+  terraform:
+    github-oidc-provider:
+      vars:
+        enabled: true

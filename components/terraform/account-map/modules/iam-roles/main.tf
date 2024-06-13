@@ -1,4 +1,4 @@
-# THIS IS NOT THE TRUE IMPLEMENTION!
+# THIS IS NOT THE TRUE IMPLEMENTATION!
 # We have drastically simplified the module here for demo sake
 locals {
   terraform_role_map = {
