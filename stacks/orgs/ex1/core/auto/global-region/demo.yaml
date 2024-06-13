@@ -1,4 +1,0 @@
-import:
-  - orgs/ex1/core/auto/_defaults
-  - mixins/region/global-region
-  - catalog/github-oidc-provider

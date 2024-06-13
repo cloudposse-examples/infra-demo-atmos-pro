@@ -14,7 +14,7 @@ components:
       vars:
         enabled: true
         github_actions_allowed_repos:
-          - "cloudposse-examples/infra-demo-atmos"
+          - "cloudposse-examples/infra-demo-atmos-pro"
         attributes: [ "gitops" ]
         iam_policies:
           - gitops

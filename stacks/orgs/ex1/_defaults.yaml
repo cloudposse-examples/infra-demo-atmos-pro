@@ -27,9 +27,9 @@ terraform:
   backend_type: s3
   backend:
     s3:
-      bucket: ex1-core-use2-root-tfstate
-      dynamodb_table: ex1-core-use2-root-tfstate-lock
-      role_arn: arn:aws:iam::__ROOT_ACCOUNT_NUMBER__:role/ex1-core-gbl-root-tfstate
+      bucket: cptest-core-ue2-root-tfstate-ex1
+      dynamodb_table: cptest-core-ue2-root-tfstate-ex1-lock
+      role_arn: arn:aws:iam::822777368227:role/cptest-core-gbl-root-tfstate-ex1
       encrypt: true
       key: terraform.tfstate
       acl: bucket-owner-full-control
@@ -38,7 +38,7 @@ terraform:
     s3:
       # This ensures that remote-state uses the role_arn even when
       # the backend has role_arn overridden to be set to `null`.
-      role_arn: arn:aws:iam::__ROOT_ACCOUNT_NUMBER__:role/ex1-core-gbl-root-tfstate
+      role_arn: arn:aws:iam::822777368227:role/cptest-core-gbl-root-tfstate-ex1
 
   settings:
     github:

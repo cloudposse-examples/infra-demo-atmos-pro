@@ -1,0 +1,3 @@
+import:
+  - orgs/ex1/core/_defaults
+  - mixins/stage/root

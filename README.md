@@ -9,9 +9,9 @@
 
 <p align="center">
   <a href="https://cloudposse-examples.slack.com/"><img alt="Slack" src="https://img.shields.io/badge/slack-cloudposse-examples-brightgreen.svg?logo=slack"/></a>
-  <a href="https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-examples/infra-demo-atmos&utm_content=slack"><img alt="SweetOps" src="https://slack.cloudposse.com/badge.svg"/></a>
-  <a href="https://github.com/cloudposse-examples/infra-demo-atmos/actions/workflows/atmos-terraform-apply.yaml"><img alt="atmos-terraform-apply" src="https://github.com/cloudposse-examples/infra-demo-atmos/actions/workflows/atmos-terraform-apply.yaml/badge.svg"/></a>
-  <a href="https://github.com/cloudposse-examples/infra-demo-atmos/actions/workflows/atmos-terraform-drift-detection.yaml"><img alt="atmos-terraform-drift-detection" src="https://github.com/cloudposse-examples/infra-demo-atmos/actions/workflows/atmos-terraform-drift-detection.yaml/badge.svg"/></a>
+  <a href="https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-examples/infra-demo-atmos-pro&utm_content=slack"><img alt="SweetOps" src="https://slack.cloudposse.com/badge.svg"/></a>
+  <a href="https://github.com/cloudposse-examples/infra-demo-atmos-pro/actions/workflows/atmos-terraform-apply.yaml"><img alt="atmos-terraform-apply" src="https://github.com/cloudposse-examples/infra-demo-atmos-pro/actions/workflows/atmos-terraform-apply.yaml/badge.svg"/></a>
+  <a href="https://github.com/cloudposse-examples/infra-demo-atmos-pro/actions/workflows/atmos-terraform-drift-detection.yaml"><img alt="atmos-terraform-drift-detection" src="https://github.com/cloudposse-examples/infra-demo-atmos-pro/actions/workflows/atmos-terraform-drift-detection.yaml/badge.svg"/></a>
 </p>
 
 <p align="center">
@@ -420,7 +420,7 @@ a GitHub Issue or Pull Request on the relevant GitHub repository.
 For Cloud Posse repositories, ping the Cloud Posse team with the Issue or Pull Request. They will prioritize current and
 past customer requested changes. Active customers should reach out in the shared Slack channel, whereas inactive
 customers should reach out via
-[SweetOps](https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-examples/infra-demo-atmos&utm_content=slack).
+[SweetOps](https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-examples/infra-demo-atmos-pro&utm_content=slack).
 
 </details>
 <details>
@@ -428,7 +428,7 @@ customers should reach out via
 
 As customers, we have direct access to the Cloud Posse team via Slack, Zoom, and Email. Active customers have a shared
 Slack channel with the Cloud Posse team, and inactive customers can reach out to Cloud Posse via
-[SweetOps](https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-examples/infra-demo-atmos&utm_content=slack)
+[SweetOps](https://cpco.io/slack?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-examples/infra-demo-atmos-pro&utm_content=slack)
 in the `#refarch` channel.
 
 Cloud Posse also hosts two customer-only Workshops per week. Please join these workshops and ask questions; the Cloud
