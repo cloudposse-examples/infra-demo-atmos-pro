@@ -13,7 +13,7 @@ permissions:
   pull-requests: write
 jobs:
   label:
-    runs-on: ["self-hosted", "default"]
+    runs-on: ["ubuntu-latest"]
 
     steps:
       - uses: actions/labeler@v4
