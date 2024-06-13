@@ -1,0 +1,41 @@
+name: 👽 Atmos Terraform Apply
+
+on:
+  workflow_dispatch:
+    inputs:
+      component:
+        description: "Atmos Component"
+        type: string
+      stack:
+        description: "Atmos Stack"
+        type: string
+      sha:
+        description: "Git Commit SHA"
+        type: string
+      environment:
+        description: "The GitHub environment"
+        type: string
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  apply:
+    name: ${{ inputs.stack }} ${{ inputs.component }}
+    environment: ${{ inputs.environment }}
+    runs-on:
+      - "ubuntu-latest"
+    steps:
+      - name: Apply Atmos Component
+        uses: cloudposse/github-action-atmos-terraform-apply@v2
+        with:
+          component: ${{ inputs.component }}
+          stack: ${{ inputs.stack }}
+          sha: ${{ inputs.sha }}
+          atmos-version: ${{ vars.ATMOS_VERSION }}
+          atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
