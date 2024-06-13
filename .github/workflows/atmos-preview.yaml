@@ -1,0 +1,36 @@
+name: 👽 Atmos Preview
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  affected:
+    name: Trigger Affected
+
+    runs-on:
+      - "ubuntu-latest"
+
+    steps:
+      - name: Gather Affected Stacks
+        id: affected
+        uses: cloudposse/github-action-atmos-affected-stacks@v3
+        with:
+          atmos-version: ${{ vars.ATMOS_VERSION }}
+          atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
+
+      - name: Trigger Atmos Pro
+        if: ${{ steps.affected.outputs.has-affected-stacks == 'true' }}
+        shell: bash
+        run: |
+          echo "trigger atmos pro - plan"
+          echo "${{ steps.affected.outputs.matrix }}"
