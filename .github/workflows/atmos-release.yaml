@@ -28,5 +28,5 @@ jobs:
         if: ${{ steps.affected.outputs.has-affected-stacks == 'true' }}
         shell: bash
         run: |
-          echo "trigger atmos pro"
+          echo "trigger atmos pro - apply"
           echo "${{ steps.affected.outputs.matrix }}"
