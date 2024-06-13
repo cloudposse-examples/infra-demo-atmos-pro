@@ -14,12 +14,3 @@ repos:
         types: ["markdown"]
         # exclude files such as components/terraform/account/README.md, which are modified by terraform_docs
         exclude: (components\/terraform\/*README)\.md
-  - repo: local
-    hooks:
-      - id: rebuild-adr-docs
-        name: rebuild-adr-docs
-        entry: bash -c 'make rebuild-adr-docs'
-        language: system
-        types: ["markdown"]
-        files: docs\/adr\/.*md
-        pass_filenames: false
