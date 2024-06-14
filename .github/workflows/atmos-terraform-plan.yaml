@@ -6,13 +6,15 @@ on:
       component:
         description: "Atmos Component"
         type: string
+        default: "s3-bucket/parent" # TODO used for testing, remove me
       stack:
         description: "Atmos Stack"
         type: string
+        default: "plat-use2-dev" # TODO used for testing, remove me
       sha:
         description: "Git Commit SHA"
         type: string
-        default: "${{ github.sha }}"
+        default: ""
       # environment:
       #   description: "GitHub environment"
       #   type: string
@@ -38,6 +40,6 @@ jobs:
         with:
           component: ${{ inputs.component }}
           stack: ${{ inputs.stack }}
-          sha: ${{ inputs.sha }}
+          sha: ${{ inputs.sha || github.sha }}
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
