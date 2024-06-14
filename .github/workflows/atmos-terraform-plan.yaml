@@ -34,19 +34,8 @@ jobs:
     runs-on:
       - "ubuntu-latest"
     steps:
-      - name: debug
-        shell: bash
-        run: |
-          echo "component: ${{ inputs.component }}"
-          echo "stack: ${{ inputs.stack }}"
-          echo "sha: ${{ github.sha }}"
-          echo "atmos-version: ${{ vars.ATMOS_VERSION }}"
-          echo "atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}"
-
-      - uses: unfor19/install-aws-cli-action@v1
-
       - name: Plan Atmos Component
-        uses: cloudposse/github-action-atmos-terraform-plan@debug/atmos-config
+        uses: cloudposse/github-action-atmos-terraform-plan@v2
         with:
           component: ${{ inputs.component }}
           stack: ${{ inputs.stack }}
