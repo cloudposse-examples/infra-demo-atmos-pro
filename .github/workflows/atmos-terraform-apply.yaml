@@ -14,14 +14,13 @@ on:
       sha:
         description: "Git Commit SHA"
         type: string
-        default: ""
       # environment:
       #   description: "The GitHub environment"
       #   type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false # Do not cancel apply in progress to avoid locking state
 
 permissions:
   id-token: write
@@ -40,6 +39,7 @@ jobs:
         with:
           component: ${{ inputs.component }}
           stack: ${{ inputs.stack }}
-          sha: ${{ inputs.sha || github.sha }}
+          # sha: ${{ inputs.sha }}
+          sha: ${{ github.sha }} # TODO used for testing, remove me
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}

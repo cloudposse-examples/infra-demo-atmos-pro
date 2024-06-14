@@ -14,7 +14,6 @@ on:
       sha:
         description: "Git Commit SHA"
         type: string
-        default: ""
       # environment:
       #   description: "GitHub environment"
       #   type: string
@@ -40,6 +39,7 @@ jobs:
         with:
           component: ${{ inputs.component }}
           stack: ${{ inputs.stack }}
-          sha: ${{ inputs.sha || github.sha }}
+          # sha: ${{ inputs.sha }}
+          sha: ${{ github.sha }} # TODO used for testing, remove me
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
