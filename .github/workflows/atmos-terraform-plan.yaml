@@ -6,7 +6,7 @@ on:
       component:
         description: "Atmos Component"
         type: string
-        default: "s3-bucket/parent" # TODO used for testing, remove me
+        default: "s3-bucket/mock-parent" # TODO used for testing, remove me
       stack:
         description: "Atmos Stack"
         type: string
