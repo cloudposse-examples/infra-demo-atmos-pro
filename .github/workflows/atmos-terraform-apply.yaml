@@ -33,6 +33,10 @@ jobs:
     runs-on:
       - "ubuntu-latest"
     steps:
+      # If retrieve action is moved, then we can delete this
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Retrieve Plan
         uses: ./.github/actions/retrieve-plan
         with:
