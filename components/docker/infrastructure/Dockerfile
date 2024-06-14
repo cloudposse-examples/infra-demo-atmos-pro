@@ -1,10 +1,10 @@
 # https://github.com/cloudposse/geodesic/
-ARG GEODESIC_VERSION=2.5.0
+ARG GEODESIC_VERSION=3.0.0
 ARG GEODESIC_OS=debian
 # https://github.com/cloudposse/atmos
-ARG ATMOS_VERSION=1.63.0
+ARG ATMOS_VERSION=1.80.0
 # This should match the version set in .github/workflows/auto-format.yaml
-ARG TF_1_VERSION=1.4.5
+ARG TF_1_VERSION=1.5.7
 
 FROM public.ecr.aws/cloudposse/geodesic:${GEODESIC_VERSION}-${GEODESIC_OS}
 

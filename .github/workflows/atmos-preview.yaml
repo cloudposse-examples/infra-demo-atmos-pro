@@ -1,7 +1,8 @@
 name: 👽 Atmos Preview
 
 on:
-  pull_request_target:
+  #pull_request_target:
+  pull_request:
     types:
       - opened
       - synchronize

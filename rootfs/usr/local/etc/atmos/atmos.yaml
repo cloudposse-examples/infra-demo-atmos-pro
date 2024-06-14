@@ -140,16 +140,16 @@ schemas:
 integrations:
   github:
     gitops:
-      terraform-version: "1.4.5"
+      terraform-version: "1.5.7"
       infracost-enabled: "False"
       artifact-storage:
-        region: "us-east-1"
-        bucket: "ex1-core-use1-auto-gitops-plan-storage"
-        table: "ex1-core-use1-auto-gitops-plan-storage"
-        role: "arn:aws:iam::__AUTO_ACCOUNT_NUMBER__:role/ex1-core-use1-auto-gha-iam-gitops"
+        region: "us-east-2"
+        bucket: "ex1-core-use2-auto-gitops-plan-storage"
+        table: "ex1-core-use2-auto-gitops-plan-storage"
+        role: "arn:aws:iam::461333128641:role/ex1-core-use2-auto-gha-iam-gitops"
       role:
-        plan: "arn:aws:iam::__IDENTITY_ACCOUNT_NUMBER__:role/ex1-core-gbl-identity-gitops"
-        apply: "arn:aws:iam::__IDENTITY_ACCOUNT_NUMBER__:role/ex1-core-gbl-identity-gitops"
+        plan: "arn:aws:iam::582055374050:role/cptest-core-gbl-identity-gitops"
+        apply: "arn:aws:iam::582055374050:role/cptest-core-gbl-identity-gitops"
       matrix:
         sort-by: |-
           .stack_slug
