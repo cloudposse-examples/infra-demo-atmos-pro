@@ -17,11 +17,11 @@ jobs:
     steps:
       # Drafts your next Release notes as Pull Requests are merged into "master"
       - name: Create/Update Draft release
-        uses: release-drafter/release-drafter@v5
+        uses: release-drafter/release-drafter@v6
         with:
           publish: false
           prerelease: false
-          config-name: configs/draft-release.yml
+          config-name: draft-release.yaml
           commitish: ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
