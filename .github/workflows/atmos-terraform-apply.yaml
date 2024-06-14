@@ -6,19 +6,21 @@ on:
       component:
         description: "Atmos Component"
         type: string
+        default: "s3-bucket/mock-parent" # TODO used for testing, remove me
       stack:
         description: "Atmos Stack"
         type: string
+        default: "plat-use2-dev" # TODO used for testing, remove me
       sha:
         description: "Git Commit SHA"
         type: string
-      environment:
-        description: "The GitHub environment"
-        type: string
+      # environment:
+      #   description: "The GitHub environment"
+      #   type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false # Do not cancel apply in progress to avoid locking state
 
 permissions:
   id-token: write
@@ -27,7 +29,8 @@ permissions:
 jobs:
   apply:
     name: ${{ inputs.stack }} ${{ inputs.component }}
-    environment: ${{ inputs.environment }}
+    environment: "${{ inputs.stack }}-${{ inputs.component }}"
+    #environment: ${{ inputs.environment }}
     runs-on:
       - "ubuntu-latest"
     steps:
@@ -36,6 +39,7 @@ jobs:
         with:
           component: ${{ inputs.component }}
           stack: ${{ inputs.stack }}
-          sha: ${{ inputs.sha }}
+          # sha: ${{ inputs.sha }}
+          sha: ${{ github.sha }} # TODO used for testing, remove me
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}

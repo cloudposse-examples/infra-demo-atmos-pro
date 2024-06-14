@@ -2,10 +2,10 @@
 # We have drastically simplified the module here for demo sake
 locals {
   terraform_role_map = {
-    "core-auto"    = "arn:aws:iam::461333128641:role/cptest-core-gbl-auto-terraform"
-    "plat-dev"     = "arn:aws:iam::142885371614:role/cptest-plat-gbl-dev-terraform"
-    "plat-staging" = "arn:aws:iam::204944560748:role/cptest-plat-gbl-staging-terraform"
-    "plat-prod"    = "arn:aws:iam::500863271350:role/cptest-plat-gbl-prod-terraform"
+    "core-auto"    = "arn:aws:iam::461333128641:role/cptest-core-gbl-auto-terraform"    # this is the true core-auto, where gitops resources are deployed
+    "plat-dev"     = "arn:aws:iam::630114703016:role/cptest-plat-gbl-sandbox-terraform" # this is actually plat-sandbox. For testing we are intentionally deploying everything into sandbox
+    "plat-staging" = "arn:aws:iam::630114703016:role/cptest-plat-gbl-sandbox-terraform" # ^
+    "plat-prod"    = "arn:aws:iam::630114703016:role/cptest-plat-gbl-sandbox-terraform" # ^^
   }
 
   account_id             = "${module.this.tenant}-${module.this.stage}"
