@@ -12,6 +12,8 @@ components:
         component: s3-bucket
       vars:
         name: parent
+        tags:
+          test: test
         attributes:
           - mock
 
