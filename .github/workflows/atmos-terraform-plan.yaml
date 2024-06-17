@@ -12,11 +12,8 @@ on:
         type: string
         default: "plat-use2-dev" # TODO used for testing, remove me
       sha:
-        description: "Git Commit SHA"
+        description: "Commit SHA"
         type: string
-      # environment:
-      #   description: "GitHub environment"
-      #   type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -28,9 +25,7 @@ permissions:
 
 jobs:
   plan:
-    name: ${{ inputs.stack }} ${{ inputs.component }}
-    environment: "${{ inputs.stack }}-${{ inputs.component }}"
-    #environment: ${{ inputs.environment }}
+    name: Plan ${{ inputs.stack }} ${{ inputs.component }}
     runs-on:
       - "ubuntu-latest"
     steps:
