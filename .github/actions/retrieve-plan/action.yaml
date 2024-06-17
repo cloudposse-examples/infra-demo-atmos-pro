@@ -27,7 +27,7 @@ inputs:
 
 outputs:
   exists:
-    descriptions: "Whether or not a plan exists for the given input"
+    description: "Whether or not a plan exists for the given input"
     value: ${{ steps.plan_status.exists }}
 
 runs:

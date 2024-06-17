@@ -67,12 +67,20 @@ jobs:
     needs:
       - plan
     steps:
-      - name: Apply Atmos Component
-        uses: cloudposse/github-action-atmos-terraform-apply@v2
-        with:
-          component: ${{ inputs.component }}
-          stack: ${{ inputs.stack }}
-          # sha: ${{ inputs.sha }}
-          sha: ${{ github.sha }} # TODO used for testing, remove me
-          atmos-version: ${{ vars.ATMOS_VERSION }}
-          atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
+      - name: echo
+        shell: bash
+        run: |
+          echo "component: ${{ inputs.component }}"
+          echo "stack: ${{ inputs.stack }}"
+          echo "atmos-version: ${{ vars.ATMOS_VERSION }}"
+          echo "atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}"
+
+      #- name: Apply Atmos Component
+      #  uses: cloudposse/github-action-atmos-terraform-apply@v2
+      #  with:
+      #    component: ${{ inputs.component }}
+      #    stack: ${{ inputs.stack }}
+      #    # sha: ${{ inputs.sha }}
+      #    sha: ${{ github.sha }} # TODO used for testing, remove me
+      #    atmos-version: ${{ vars.ATMOS_VERSION }}
+      #    atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
