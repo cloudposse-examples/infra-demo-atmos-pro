@@ -12,10 +12,10 @@ on:
         type: string
         default: "plat-use2-dev" # TODO used for testing, remove me
       sha:
-        description: "Git Commit SHA"
+        description: "Commit SHA"
         type: string
       environment:
-        description: "The GitHub environment"
+        description: "GitHub environment"
         type: string
         default: "nonprod" # TODO used for testing, remove me
 

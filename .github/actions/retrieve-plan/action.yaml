@@ -48,6 +48,14 @@ runs:
         token: ${{ inputs.token }}
         install-wrapper: false
 
+    - name: Find component path
+      uses: cloudposse/github-action-atmos-get-setting@v1
+      id: component-path
+      with:
+        component: ${{ inputs.component }}
+        stack: ${{ inputs.stack }}
+        settings-path: component_info.component_path
+
     - name: Gather Configuration
       shell: bash
       id: config
@@ -60,7 +68,7 @@ runs:
         COMPONENT_PATH=${{ steps.component-path.outputs.value }}
         COMPONENT_NAME=$(echo "${{ inputs.component }}" | sed 's#/#_#g')
         COMPONENT_SLUG="$STACK_NAME-$COMPONENT_NAME"
-        PLAN_FILE="$( realpath ${COMPONENT_PATH})/$COMPONENT_SLUG-${{ inputs.sha }}.planfile )"
+        PLAN_FILE="$( realpath ${COMPONENT_PATH})/$COMPONENT_SLUG-${{ inputs.sha }}.planfile"
         echo "plan_file=$PLAN_FILE" >> $GITHUB_OUTPUT
 
     - name: Configure State AWS Credentials

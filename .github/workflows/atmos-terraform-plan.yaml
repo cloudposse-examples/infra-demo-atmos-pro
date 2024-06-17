@@ -12,7 +12,7 @@ on:
         type: string
         default: "plat-use2-dev" # TODO used for testing, remove me
       sha:
-        description: "Git Commit SHA"
+        description: "Commit SHA"
         type: string
 
 concurrency:
