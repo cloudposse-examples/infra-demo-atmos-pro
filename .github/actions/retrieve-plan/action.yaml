@@ -83,7 +83,7 @@ runs:
     - name: Retrieve Plan
       uses: cloudposse/github-action-terraform-plan-storage@v1
       id: retrieve-plan
-      continue-on-error: true
+      continue-on-error: true # TODO, this action should be updated to return empty instead of failing when plan isnt found
       with:
         action: getPlan
         planPath: ${{ steps.config.outputs.plan_file }}
@@ -97,7 +97,7 @@ runs:
       id: plan_status
       shell: bash
       run: |
-        file="${{ steps.vars.outputs.plan_file }}.json"
+        file="${{ steps.config.outputs.plan_file }}.json"
         if [ -s "$file" ]; then
           echo "Plan exists!"
           echo "exists=true" >> $GITHUB_OUTPUT
