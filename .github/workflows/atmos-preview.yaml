@@ -34,4 +34,4 @@ jobs:
         shell: bash
         run: |
           echo "trigger atmos pro - plan"
-          echo "${{ steps.affected.outputs.matrix }}"
+          echo "${{ steps.affected.outputs.affected }}"

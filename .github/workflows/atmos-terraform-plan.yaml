@@ -14,9 +14,13 @@ on:
       sha:
         description: "Commit SHA"
         type: string
+      atmos_pro_run_id:
+        description: "Atmos Pro Run ID"
+        type: string
+        default: "12345" # TODO used for testing, remove me
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: "plan-${{ inputs.component }}-${{ inputs.stack }}-${{ inputs.atmos_pro_run_id}}"
   cancel-in-progress: true
 
 permissions:
@@ -26,6 +30,7 @@ permissions:
 jobs:
   plan:
     name: Plan ${{ inputs.stack }} ${{ inputs.component }}
+    run-name: plan ${{ inputs.component }}/${{ inputs.stack }}/${{ inputs.atmos_pro_run_id}}
     runs-on:
       - "ubuntu-latest"
     steps:
