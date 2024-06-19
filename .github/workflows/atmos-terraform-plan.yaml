@@ -20,7 +20,7 @@ on:
         default: "12345" # TODO used for testing, remove me
 
 concurrency:
-  group: "plan-${{ inputs.component }}-${{ inputs.stack }}-${{ inputs.atmos_pro_run_id}}"
+  group: "${{ inputs.component }}-${{ inputs.stack }}"
   cancel-in-progress: true
 
 permissions:

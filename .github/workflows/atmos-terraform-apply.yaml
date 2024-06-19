@@ -24,7 +24,7 @@ on:
         default: "12345" # TODO used for testing, remove me
 
 concurrency:
-  group: "apply-${{ inputs.component }}-${{ inputs.stack }}-${{ inputs.atmos_pro_run_id}}"
+  group: "${{ inputs.component }}-${{ inputs.stack }}"
   cancel-in-progress: false # Do not cancel apply in progress to avoid locking state
 
 permissions:
