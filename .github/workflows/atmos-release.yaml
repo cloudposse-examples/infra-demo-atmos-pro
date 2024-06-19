@@ -23,10 +23,16 @@ jobs:
         with:
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
+          # TODO
+          # We need to specify what to include in this release
+          # All changes since the last release?
+          # s.t. base is last release, head is this release
 
       - name: Trigger Atmos Pro
         if: ${{ steps.affected.outputs.has-affected-stacks == 'true' }}
         shell: bash
         run: |
           echo "trigger atmos pro - apply"
-          echo "${{ steps.affected.outputs.matrix }}"
+          echo "${{ steps.affected.outputs.affected }}" > affected.json
+          cat affected.json
+          curl -X POST -H "Content-Type: application/json" -d @affected.json https://ngrok.mattcalhoun.com/api/affected-stacks

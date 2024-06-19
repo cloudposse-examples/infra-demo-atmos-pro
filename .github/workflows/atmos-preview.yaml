@@ -34,4 +34,6 @@ jobs:
         shell: bash
         run: |
           echo "trigger atmos pro - plan"
-          echo "${{ steps.affected.outputs.matrix }}"
+          echo "${{ steps.affected.outputs.affected }}" > affected.json
+          cat affected.json
+          curl -X POST -H "Content-Type: application/json" -d @affected.json https://ngrok.mattcalhoun.com/api/affected-stacks
