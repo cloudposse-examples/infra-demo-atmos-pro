@@ -50,6 +50,8 @@ jobs:
         shell: bash
         run: |
           echo "trigger atmos pro - apply"
-          echo "${{ steps.affected.outputs.affected }}" > affected.json
+          echo '${{ steps.affected.outputs.affected }}' | jq  > affected.json
           cat affected.json
-          curl -X POST -H "Content-Type: application/json" -d @affected.json https://ngrok.mattcalhoun.com/api/affected-stacks
+          jq --argjson affected "$(cat affected.json)" --arg commitSha "${{ github.sha }}" '{ "owner": "cloudposse-examples","repo": "infra-demo-atmos-pro","ref": "main","sha": $commitSha,"stacks": $affected}' affected.json > affected-transformed.json
+          cat affected-transformed.json
+          curl -fsSL -X POST -H "Content-Type: application/json" -d @affected-transformed.json https://ngrok.mattcalhoun.com/api/affected-stacks
