@@ -1,0 +1,37 @@
+[
+   {
+      "component": "s3-bucket/mock-parent",
+      "component_type": "terraform",
+      "component_path": "components/terraform/s3-bucket",
+      "stack": "plat-use2-dev",
+      "stack_slug": "plat-use2-dev-s3-bucket-mock-parent",
+      "affected": "stack.vars",
+      "dependents": [
+         {
+            "component": "s3-bucket/mock-child",
+            "component_type": "terraform",
+            "component_path": "components/terraform/s3-bucket",
+            "namespace": "ex1",
+            "tenant": "plat",
+            "environment": "use2",
+            "stage": "dev",
+            "stack": "plat-use2-dev",
+            "stack_slug": "plat-use2-dev-s3-bucket-mock-child",
+            "dependents": [
+               {
+                  "component": "s3-bucket/mock-subchild",
+                  "component_type": "terraform",
+                  "component_path": "components/terraform/s3-bucket",
+                  "namespace": "ex1",
+                  "tenant": "plat",
+                  "environment": "use2",
+                  "stage": "dev",
+                  "stack": "plat-use2-dev",
+                  "stack_slug": "plat-use2-dev-s3-bucket-mock-subchild"
+               }
+            ]
+         }
+      ],
+      "included_in_dependents": false
+   }
+]
