@@ -9,6 +9,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read # required to get the previous release SHA
+
 jobs:
   affected:
     name: Trigger Affected
@@ -22,6 +25,8 @@ jobs:
       - name: Get latest release commit SHA
         id: get_latest_release_sha
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           echo "Getting last 2 releases. This release and the previous..."
           latest_release_tag=$(gh release list --limit 2 --json tagName --jq '.[1].tagName')
