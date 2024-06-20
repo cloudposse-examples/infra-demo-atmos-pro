@@ -6,18 +6,15 @@ on:
       component:
         description: "Atmos Component"
         type: string
-        default: "s3-bucket/mock-parent" # TODO used for testing, remove me
       stack:
         description: "Atmos Stack"
         type: string
-        default: "plat-use2-dev" # TODO used for testing, remove me
       sha:
         description: "Commit SHA"
         type: string
       atmos_pro_run_id:
         description: "Atmos Pro Run ID"
         type: string
-        default: "12345" # TODO used for testing, remove me
 
 concurrency:
   group: "${{ inputs.component }}-${{ inputs.stack }}"
@@ -38,7 +35,6 @@ jobs:
         with:
           component: ${{ inputs.component }}
           stack: ${{ inputs.stack }}
-          # sha: ${{ inputs.sha }}
-          sha: ${{ github.sha }} # TODO used for testing, remove me
+          sha: ${{ inputs.sha }}
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
