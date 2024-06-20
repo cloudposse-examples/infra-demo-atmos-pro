@@ -23,8 +23,10 @@ jobs:
         id: get_latest_release_sha
         shell: bash
         run: |
-          latest_release=$(gh release list --limit 1 --json tagName,commit --jq '.[0]')
-          commit_sha=$(echo "$latest_release" | jq -r '.commit.sha')
+          echo "Getting last 2 releases. This release and the previous..."
+          latest_release_tag=$(gh release list --limit 2 --json tagName --jq '.[1].tagName')
+          echo "Getting the SHA of the previous release..."
+          commit_sha=$(gh api repos/${{ github.repository }}/git/ref/tags/$latest_release_tag --jq '.object.sha')
           echo "commit_sha=$commit_sha" >> $GITHUB_OUTPUT
 
       - name: Gather Affected Stacks
