@@ -1,5 +1,5 @@
 name: 👽 Atmos Terraform Plan
-
+run-name: plan ${{ inputs.component }}/${{ inputs.stack }}/${{ inputs.atmos_pro_run_id}}
 on:
   workflow_dispatch:
     inputs:
@@ -30,7 +30,6 @@ permissions:
 jobs:
   plan:
     name: Plan ${{ inputs.stack }} ${{ inputs.component }}
-    run-name: plan ${{ inputs.component }}/${{ inputs.stack }}/${{ inputs.atmos_pro_run_id}}
     runs-on:
       - "ubuntu-latest"
     steps:
