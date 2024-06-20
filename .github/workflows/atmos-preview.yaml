@@ -35,15 +35,6 @@ jobs:
         with:
           version: 1.7
 
-      - name: Set COMMIT_SHA for pull request or release
-        id: set-sha
-        run: |
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            echo "COMMIT_SHA=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          elif [[ "${{ github.event_name }}" == "release" ]]; then
-            echo "COMMIT_SHA=${{ github.sha }}" >> $GITHUB_ENV
-          fi
-
       - name: Trigger Atmos Pro
         if: ${{ steps.affected.outputs.has-affected-stacks == 'true' }}
         shell: bash
@@ -51,6 +42,6 @@ jobs:
           echo "trigger atmos pro - plan"
           echo '${{ steps.affected.outputs.affected }}' | jq  > affected.json
           cat affected.json
-          jq --argjson affected "$(cat affected.json)" --arg commitSha "$COMMIT_SHA" '{ "owner": "cloudposse-examples","repo": "infra-demo-atmos-pro","ref": "main","sha": $commitSha,"stacks": $affected}' affected.json > affected-transformed.json
+          jq --argjson affected "$(cat affected.json)" --arg commitSha "${{ github.event.pull_request.head.sha }}" '{ "owner": "cloudposse-examples","repo": "infra-demo-atmos-pro","ref": "main","sha": $commitSha,"stacks": $affected}' affected.json > affected-transformed.json
           cat affected-transformed.json
           curl -fsSL -X POST -H "Content-Type: application/json" -d @affected-transformed.json https://ngrok.mattcalhoun.com/api/affected-stacks
