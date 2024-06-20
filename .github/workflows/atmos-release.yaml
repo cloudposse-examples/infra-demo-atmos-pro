@@ -20,6 +20,9 @@ jobs:
       - "ubuntu-latest"
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       # TODO replace this placeholder action with the true API call
       # to get this value from the atmos pro app
       - name: Get latest release commit SHA
