@@ -49,7 +49,7 @@ jobs:
         shell: bash
         run: |
           echo "trigger atmos pro - plan"
-          echo "${{ steps.affected.outputs.affected }}" | jq  > affected.json
+          echo '${{ steps.affected.outputs.affected }}' | jq  > affected.json
           cat affected.json
           jq --argjson affected "$(cat affected.json)" --arg commitSha "$COMMIT_SHA" '{ "owner": "cloudposse-examples","repo": "infra-demo-atmos-pro","sha": $commitSha,"stacks": [$affected]}' affected.json > affected-transformed.json
           cat affected-transformed.json
