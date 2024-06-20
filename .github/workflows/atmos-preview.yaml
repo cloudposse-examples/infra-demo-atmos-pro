@@ -51,6 +51,6 @@ jobs:
           echo "trigger atmos pro - plan"
           echo "${{ steps.affected.outputs.affected }}" | jq  > affected.json
           cat affected.json
-          jq --argjson existing "$(cat affected.json)" "{ 'owner': 'cloudposse-examples', 'repo': 'infra-demo-atmos-pro', 'sha': '${COMMIT_SHA}', 'stacks': [\$affected] }" affected.json > affected-transformed.json
+          jq --argjson affected "$(cat affected.json)" "{ 'owner': 'cloudposse-examples', 'repo': 'infra-demo-atmos-pro', 'sha': '${COMMIT_SHA}', 'stacks': [\$affected] }" affected.json > affected-transformed.json
           cat affected-transformed.json
           curl -fsSL -X POST -H "Content-Type: application/json" -d @affected-transformed.json https://ngrok.mattcalhoun.com/api/affected-stacks
