@@ -1,5 +1,5 @@
 name: 👽 Atmos Terraform Apply
-run-name: plan ${{ inputs.component }}/${{ inputs.stack }}/${{ inputs.atmos_pro_run_id}}
+run-name: apply ${{ inputs.component }}/${{ inputs.stack }}/${{ inputs.atmos_pro_run_id}}
 
 on:
   workflow_dispatch:
@@ -60,7 +60,6 @@ jobs:
 
   apply:
     name: Apply ${{ inputs.stack }} ${{ inputs.component }}
-    run-name: apply ${{ inputs.component }}/${{ inputs.stack }}/${{ inputs.atmos_pro_run_id}}
     environment: ${{ inputs.environment }}
     runs-on:
       - "ubuntu-latest"
