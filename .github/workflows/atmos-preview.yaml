@@ -29,4 +29,4 @@ jobs:
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
           atmos-pro-upload: true
-          atmos-pro-base-url: https://ngrok.mattcalhoun.com/
+          atmos-pro-base-url: https://ngrok.mattcalhoun.com
