@@ -11,7 +11,7 @@ components:
           - s3-bucket/defaults
         component: s3-bucket
       vars:
-        name: parent8
+        name: parent9
         attributes:
           - mock
 
