@@ -24,24 +24,9 @@ jobs:
     steps:
       - name: Gather Affected Stacks
         id: affected
-        uses: cloudposse/github-action-atmos-affected-stacks@v3
+        uses: cloudposse/github-action-atmos-affected-stacks@feature/add-atmos-pro-upload
         with:
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
-          atmos-include-dependents: true
-
-      - name: Install jq
-        uses: dcarbone/install-jq-action@v2.1.0
-        with:
-          version: 1.7
-
-      - name: Trigger Atmos Pro
-        if: ${{ steps.affected.outputs.has-affected-stacks == 'true' }}
-        shell: bash
-        run: |
-          echo "trigger atmos pro - plan"
-          echo '${{ steps.affected.outputs.affected }}' | jq  > affected.json
-          cat affected.json
-          jq --argjson affected "$(cat affected.json)" --arg commitSha "${{ github.event.pull_request.head.sha }}" '{ "owner": "cloudposse-examples","repo": "infra-demo-atmos-pro","ref": "main","sha": $commitSha,"stacks": $affected}' affected.json > affected-transformed.json
-          cat affected-transformed.json
-          curl -fsSL -X POST -H "Content-Type: application/json" -d @affected-transformed.json https://ngrok.mattcalhoun.com/api/affected-stacks
+          atmos-pro-upload: true
+          atmos-pro-base-url: https://ngrok.mattcalhoun.com
