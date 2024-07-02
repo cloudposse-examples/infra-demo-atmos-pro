@@ -11,12 +11,12 @@ module "lb" {
 
 output "vpc_id" {
   description = "Mock VPC ID"
-  value       = module.network.outputs.vpc_id
+  value       = module.lb.outputs.vpc_id
 }
 
 output "lb_id" {
   description = "Mock load balancer ID"
-  value       = module.network.outputs.lb_id
+  value       = module.lb.outputs.lb_id
 }
 
 output "cluster_id" {
