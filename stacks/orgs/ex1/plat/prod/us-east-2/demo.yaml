@@ -3,6 +3,10 @@ import:
   - mixins/region/us-east-2
   - catalog/s3-bucket/defaults
 
+  - catalog/network
+  - catalog/load-balancer
+  - catalog/cluster
+
 components:
   terraform:
     s3-bucket/mock-parent:
