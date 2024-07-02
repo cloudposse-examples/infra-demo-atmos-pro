@@ -1,0 +1,6 @@
+components:
+  terraform:
+    cluster:
+      vars:
+        enabled: true
+        name: cluster

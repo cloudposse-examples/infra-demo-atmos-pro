@@ -1,0 +1,6 @@
+components:
+  terraform:
+    load-balancer:
+      vars:
+        enabled: true
+        name: "lb"
