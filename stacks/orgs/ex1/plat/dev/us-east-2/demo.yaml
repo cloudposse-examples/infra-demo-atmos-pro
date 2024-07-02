@@ -9,6 +9,18 @@ import:
 
 components:
   terraform:
+    network:
+      vars:
+        name: network1
+
+    load-balancer:
+      vars:
+        name: lb1
+
+    cluster:
+      vars:
+        name: cluster1
+
     s3-bucket/mock-parent:
       metadata:
         inherits:

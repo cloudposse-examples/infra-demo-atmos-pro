@@ -1,6 +1,10 @@
 components:
   terraform:
     cluster:
+      settings:
+        depends_on:
+          1:
+            component: load-balancer
       vars:
         enabled: true
         name: cluster
