@@ -1,0 +1,10 @@
+components:
+  terraform:
+    load-balancer:
+      settings:
+        depends_on:
+          1:
+            component: network
+      vars:
+        enabled: true
+        name: "lb"
