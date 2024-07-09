@@ -11,11 +11,11 @@ components:
   terraform:
     network:
       vars:
-        name: network2
+        name: network1
 
     load-balancer:
       vars:
-        name: lb1
+        name: lb2
 
     cluster:
       vars:
