@@ -15,7 +15,7 @@ components:
 
     load-balancer:
       vars:
-        name: lb2
+        name: lb3
 
     cluster:
       vars:
