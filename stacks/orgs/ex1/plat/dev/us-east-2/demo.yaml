@@ -1,7 +1,6 @@
 import:
   - orgs/ex1/plat/dev/_defaults
   - mixins/region/us-east-2
-  - catalog/s3-bucket/defaults
 
   - catalog/network
   - catalog/load-balancer
@@ -20,41 +19,3 @@ components:
     cluster:
       vars:
         name: cluster1
-
-    s3-bucket/mock-parent:
-      metadata:
-        inherits:
-          - s3-bucket/defaults
-        component: s3-bucket
-      vars:
-        name: parent21
-        attributes:
-          - mock
-
-    s3-bucket/mock-child:
-      settings:
-        depends_on:
-          1:
-            component: "s3-bucket/mock-parent"
-      metadata:
-        inherits:
-          - s3-bucket/defaults
-        component: s3-bucket
-      vars:
-        name: child
-        attributes:
-          - mock
-
-    s3-bucket/mock-subchild:
-      settings:
-        depends_on:
-          1:
-            component: "s3-bucket/mock-child"
-      metadata:
-        inherits:
-          - s3-bucket/defaults
-        component: s3-bucket
-      vars:
-        name: subchild
-        attributes:
-          - mock
