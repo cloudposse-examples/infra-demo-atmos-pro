@@ -10,3 +10,15 @@ workflows:
       - command: terraform deploy cdn
       - command: terraform deploy cache
       - command: terraform deploy frontend
+
+  destroy:
+    description: Destroy EVERY mock component for demos for some stack
+    steps:
+      - command: terraform destroy frontend --auto-approve
+      - command: terraform destroy cache --auto-approve
+      - command: terraform destroy cdn --auto-approve
+      - command: terraform destroy object-storage --auto-approve
+      - command: terraform destroy cluster --auto-approve
+      - command: terraform destroy load-balancer --auto-approve
+      - command: terraform destroy database --auto-approve
+      - command: terraform destroy vpc --auto-approve
