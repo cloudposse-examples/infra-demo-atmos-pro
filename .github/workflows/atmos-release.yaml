@@ -40,6 +40,8 @@ jobs:
       - name: Gather Affected Stacks
         id: affected
         uses: cloudposse/github-action-atmos-affected-stacks@feature/add-atmos-pro-upload
+        env:
+          ATMOS_PRO_TOKEN: ${{ secrets.ATMOS_PRO_TOKEN }}
         with:
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
