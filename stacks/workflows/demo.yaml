@@ -1,0 +1,12 @@
+workflows:
+  deploy:
+    description: Deploy EVERY mock component for demos for some stack
+    steps:
+      - command: terraform deploy vpc
+      - command: terraform deploy database
+      - command: terraform deploy load-balancer
+      - command: terraform deploy cluster
+      - command: terraform deploy object-storage
+      - command: terraform deploy cdn
+      - command: terraform deploy cache
+      - command: terraform deploy frontend
