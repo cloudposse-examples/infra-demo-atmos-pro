@@ -2,20 +2,16 @@ import:
   - orgs/ex1/plat/dev/_defaults
   - mixins/region/us-east-2
 
-  - catalog/network
+  # Mock components
+  - catalog/vpc
+
+  - catalog/database
+
   - catalog/load-balancer
   - catalog/cluster
 
-components:
-  terraform:
-    network:
-      vars:
-        name: network1
+  - catalog/object-storage
+  - catalog/cdn
+  - catalog/cache
 
-    load-balancer:
-      vars:
-        name: lb2
-
-    cluster:
-      vars:
-        name: cluster1
+  - catalog/frontend

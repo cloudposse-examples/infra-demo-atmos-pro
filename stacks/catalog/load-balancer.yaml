@@ -4,8 +4,6 @@ components:
       settings:
         depends_on:
           1:
-            component: network
+            component: vpc
       vars:
-        enabled: true
-        name: "lb"
         vpc_id: '{{ (atmos.Component "vpc").outputs.vpc_id }}'

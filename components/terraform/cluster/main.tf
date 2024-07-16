@@ -1,24 +1,11 @@
-# This is not a real component. This is created for demo purposes only
-
-variable "vpc_id" {
-  description = "VPC ID"
+resource "random_id" "id" {
+  byte_length = 8
 }
 
-variable "lb_id" {
-  description = "Load balancer ID"
-}
-
-output "vpc_id" {
-  description = "Mock VPC ID"
-  value       = var.vpc_id
-}
-
-output "lb_id" {
-  description = "Mock load balancer ID"
-  value       = var.lb_id
+locals {
+  mock_cluster_id = "cluster-${random_id.id.hex}"
 }
 
 output "cluster_id" {
-  description = "Mock cluster ID"
-  value       = module.this.id
+  value = local.mock_cluster_id
 }
