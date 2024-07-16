@@ -8,3 +8,8 @@ components:
       vars:
         enabled: true
         name: cluster
+        vpc_id: '{{ (atmos.Component "load-balancer").outputs.vpc_id }}'
+        lb_id: '{{ (atmos.Component "load-balancer").outputs.lb_id }}'
+
+
+

@@ -8,3 +8,4 @@ components:
       vars:
         enabled: true
         name: "lb"
+        vpc_id: '{{ (atmos.Component "vpc").outputs.vpc_id }}'

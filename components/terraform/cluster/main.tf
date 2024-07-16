@@ -1,22 +1,21 @@
 # This is not a real component. This is created for demo purposes only
 
-module "lb" {
-  source  = "cloudposse/stack-config/yaml//modules/remote-state"
-  version = "1.5.0"
+variable "vpc_id" {
+  description = "VPC ID"
+}
 
-  component = "load-balancer"
-
-  context = module.this.context
+variable "lb_id" {
+  description = "Load balancer ID"
 }
 
 output "vpc_id" {
   description = "Mock VPC ID"
-  value       = module.lb.outputs.vpc_id
+  value       = var.vpc_id
 }
 
 output "lb_id" {
   description = "Mock load balancer ID"
-  value       = module.lb.outputs.lb_id
+  value       = var.lb_id
 }
 
 output "cluster_id" {

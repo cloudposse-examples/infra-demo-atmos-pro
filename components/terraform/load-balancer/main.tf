@@ -1,17 +1,12 @@
 # This is not a real component. This is created for demo purposes only
 
-module "network" {
-  source  = "cloudposse/stack-config/yaml//modules/remote-state"
-  version = "1.5.0"
-
-  component = "network"
-
-  context = module.this.context
+variable "vpc_id" {
+  description = "VPC ID"
 }
 
 output "vpc_id" {
   description = "Mock VPC ID"
-  value       = module.network.outputs.vpc_id
+  value       = var.vpc_id
 }
 
 output "lb_id" {
