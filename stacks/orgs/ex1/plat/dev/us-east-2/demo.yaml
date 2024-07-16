@@ -15,3 +15,13 @@ import:
   - catalog/cache
 
   - catalog/frontend
+
+components:
+  terraform:
+    load-balancer:
+      vars:
+        name: lb5
+
+    cluster:
+      vars:
+        name: cluster1
