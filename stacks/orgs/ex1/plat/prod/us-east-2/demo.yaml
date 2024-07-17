@@ -1,6 +1,7 @@
 import:
   - orgs/ex1/plat/prod/_defaults
   - mixins/region/us-east-2
+  - mixins/atmos-pro/default
 
   # Mock components
   - catalog/vpc
