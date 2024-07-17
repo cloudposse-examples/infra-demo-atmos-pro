@@ -10,6 +10,6 @@ components:
           3:
             component: cache
       vars:
-        cluster_id: '{{ (atmos.Component "cluster").outputs.cluster_id }}'
-        database_id: '{{ (atmos.Component "database").outputs.database_id }}'
-        cache_id: '{{ (atmos.Component "cache").outputs.cache_id }}'
+        cluster_id: '{{ (atmos.Component "cluster" .stack).outputs.cluster_id }}'
+        database_id: '{{ (atmos.Component "database" .stack).outputs.database_id }}'
+        cache_id: '{{ (atmos.Component "cache" .stack).outputs.cache_id }}'

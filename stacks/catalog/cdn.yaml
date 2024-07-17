@@ -6,4 +6,4 @@ components:
           1:
             component: object-storage
       vars:
-        storage_id: '{{ (atmos.Component "object-storage").outputs.storage_id }}'
+        storage_id: '{{ (atmos.Component "object-storage" .stack).outputs.storage_id }}'
