@@ -148,8 +148,8 @@ integrations:
         table: "ex1-core-use2-auto-gitops-plan-storage"
         role: "arn:aws:iam::461333128641:role/ex1-core-use2-auto-gha-iam-gitops"
       role:
-        plan: "arn:aws:iam::582055374050:role/cptest-core-gbl-identity-planner"
-        apply: "arn:aws:iam::582055374050:role/cptest-core-gbl-identity-planner"
+        plan: "arn:aws:iam::582055374050:role/cptest-core-gbl-identity-planners"
+        apply: "arn:aws:iam::582055374050:role/cptest-core-gbl-identity-planners"
       matrix:
         sort-by: |-
           .stack_slug
