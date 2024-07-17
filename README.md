@@ -60,7 +60,7 @@ Find all documentation at: [atmos.tools](https://atmos.tools)
 
 This repository demonstrates how to use Atmos Pro with GitHub Actions to plan and apply Terraform. We have created mock
 components in this repository that do nto actually create any resources in your AWS account. This is a demonstration
-repository to show how to use Atmos Pro with GitHub Actions. The dependency mapping is a follows.
+repository to show how to use Atmos Pro with GitHub Actions. The dependency mapping is as follows:
 
 ```mermaid
 graph LR;
