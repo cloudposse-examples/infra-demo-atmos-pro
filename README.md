@@ -56,6 +56,25 @@ Find all documentation at: [atmos.tools](https://atmos.tools)
 > [_knowledgeable community_](https://slack.cloudposse.com), teams can achieve operational mastery and innovation
 > faster, transforming their infrastructure management practices into a competitive advantage.
 
+## Usage
+
+This repository demonstrates how to use Atmos Pro with GitHub Actions to plan and apply Terraform. We have created mock
+components in this repository that do nto actually create any resources in your AWS account. This is a demonstration
+repository to show how to use Atmos Pro with GitHub Actions. The dependency mapping is a follows.
+
+```mermaid
+graph LR;
+    vpc --> cache
+    vpc --> database
+    vpc --> load-balancer
+    load-balancer --> cluster
+    object-storage --> cdn
+    cache --> frontend
+    database --> frontend
+    cluster --> frontend
+    cdn --> frontend
+```
+
 ## ✨ Contributing
 
 This project is under active development, and we encourage contributions from our community. Many thanks to our
