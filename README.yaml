@@ -53,7 +53,7 @@ usage: |-
   component dependency mapping is as follows:
 
   ```mermaid
-  graph LR;
+  graph RL;
       cache --> vpc
       database --> vpc
       load-balancer --> vpc
