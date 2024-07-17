@@ -64,15 +64,16 @@ show how to use Atmos Pro with GitHub Actions. The component dependency mapping 
 
 ```mermaid
 graph LR;
-    vpc --> cache
-    vpc --> database
-    vpc --> load-balancer
-    load-balancer --> cluster
-    object-storage --> cdn
-    cache --> frontend
-    database --> frontend
-    cluster --> frontend
-    cdn --> frontend
+    cache --> vpc
+    database --> vpc
+    load-balancer --> vpc
+    cluster --> vpc
+    cluster --> load-balancer
+    cdn --> object-storage
+    frontend --> cache
+    frontend --> database
+    frontend --> cluster
+    frontend --> cdn
 ```
 
 ## ✨ Contributing
