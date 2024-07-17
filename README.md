@@ -70,10 +70,10 @@ graph RL;
     cluster --> vpc
     cluster --> load-balancer
     cdn --> object-storage
+    cdn --> frontend
     frontend --> cache
     frontend --> database
     frontend --> cluster
-    frontend --> cdn
 ```
 
 ## ✨ Contributing
