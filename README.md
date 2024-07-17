@@ -71,9 +71,6 @@ graph RL;
     cluster --> load-balancer
     cdn --> object-storage
     cdn --> frontend
-    frontend --> cache
-    frontend --> database
-    frontend --> cluster
 ```
 
 ## ✨ Contributing
