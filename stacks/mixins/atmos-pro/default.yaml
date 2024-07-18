@@ -1,13 +1,13 @@
 settings:
   pro:
     pull_request:
-      - "on": [opened, synchronize, reopened] # Anytime a PR is opened, synchronized, or reopened
+      - trigger: [opened, synchronize, reopened] # Anytime a PR is opened, synchronized, or reopened
         workflows:
           atmos-terraform-plan.yaml: # run the atmos-terraform-plan.yaml workflow via dispatch
             inputs: # with the following inputs
               component: "{{ .atmos_component }}"
               stack: "{{ .atmos_stack }}"
-      - "on": [merged]
+      - trigger: [merged]
         workflows:
           atmos-terraform-apply.yaml:
             inputs:
