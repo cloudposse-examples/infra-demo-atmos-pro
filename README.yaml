@@ -53,6 +53,10 @@ usage: |-
   component dependency mapping is as follows:
 
   ```mermaid
+  ---
+  title: Ordered Dependencies of Components
+  ---
+
   graph RL;
       cache --> vpc
       database --> vpc
@@ -61,6 +65,10 @@ usage: |-
       cluster --> load-balancer
       cdn --> object-storage
       cdn --> frontend
+      cache --> frontend
+      api --> database
+      api --> cluster
+      frontend --> api
   ```
 
 contributors: []

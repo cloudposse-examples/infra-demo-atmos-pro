@@ -63,6 +63,10 @@ components here that do not actually create any resources in your AWS account. T
 show how to use Atmos Pro with GitHub Actions. The component dependency mapping is as follows:
 
 ```mermaid
+---
+title: Ordered Dependencies of Components
+---
+
 graph RL;
     cache --> vpc
     database --> vpc
@@ -71,6 +75,10 @@ graph RL;
     cluster --> load-balancer
     cdn --> object-storage
     cdn --> frontend
+    cache --> frontend
+    api --> database
+    api --> cluster
+    frontend --> api
 ```
 
 ## ✨ Contributing
