@@ -1,5 +1,6 @@
 settings:
   pro:
+    enabled: true
     pull_request:
       - trigger: [opened, synchronize, reopened] # Anytime a PR is opened, synchronized, or reopened
         workflows:
