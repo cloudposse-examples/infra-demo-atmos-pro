@@ -67,7 +67,7 @@ show how to use Atmos Pro with GitHub Actions. The component dependency mapping 
 title: Ordered Dependencies of Components
 ---
 
-graph RL;
+graph LR;
     cache --> vpc
     database --> vpc
     load-balancer --> vpc
@@ -75,9 +75,9 @@ graph RL;
     cluster --> load-balancer
     cdn --> object-storage
     cdn --> frontend
-    cache --> frontend
     api --> database
     api --> cluster
+    frontend --> cache
     frontend --> api
 ```
 
