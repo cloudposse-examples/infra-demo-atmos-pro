@@ -1,4 +1,6 @@
 import:
   - orgs/ex1/core/auto/_defaults
   - mixins/region/us-east-2
+
+  # Atmos Pro GitHub Action requirements
   - catalog/gitops
