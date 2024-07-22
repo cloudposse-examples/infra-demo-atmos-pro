@@ -16,3 +16,10 @@ import:
   - catalog/cache
 
   - catalog/frontend
+
+components:
+  terraform:
+    object-storage:
+      settings:
+        pro:
+          enabled: false
