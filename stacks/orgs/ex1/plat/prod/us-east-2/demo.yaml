@@ -1,7 +1,18 @@
 import:
   - orgs/ex1/plat/prod/_defaults
   - mixins/region/us-east-2
+  - mixins/atmos-pro/default
 
-  - catalog/network
+  # Mock components
+  - catalog/vpc
+
+  - catalog/database
+
   - catalog/load-balancer
   - catalog/cluster
+
+  - catalog/object-storage
+  - catalog/cdn
+  - catalog/cache
+
+  - catalog/frontend

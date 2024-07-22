@@ -1,0 +1,9 @@
+components:
+  terraform:
+    cdn:
+      settings:
+        depends_on:
+          1:
+            component: object-storage
+      vars:
+        storage_id: '{{ (atmos.Component "object-storage" .stack).outputs.storage_id }}'

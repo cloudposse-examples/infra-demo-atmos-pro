@@ -1,6 +1,0 @@
-components:
-  terraform:
-    network:
-      vars:
-        enabled: true
-        name: "network"

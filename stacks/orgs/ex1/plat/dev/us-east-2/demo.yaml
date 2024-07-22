@@ -1,17 +1,24 @@
 import:
   - orgs/ex1/plat/dev/_defaults
   - mixins/region/us-east-2
+  - mixins/atmos-pro/default
 
-  - catalog/network
+  # Mock components
+  - catalog/vpc
+
+  - catalog/database
+
   - catalog/load-balancer
   - catalog/cluster
 
+  - catalog/object-storage
+  - catalog/cdn
+  - catalog/cache
+
+  - catalog/frontend
+
 components:
   terraform:
-    network:
-      vars:
-        name: network1
-
     load-balancer:
       vars:
         name: lb5

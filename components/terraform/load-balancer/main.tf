@@ -1,20 +1,17 @@
-# This is not a real component. This is created for demo purposes only
-
-module "network" {
-  source  = "cloudposse/stack-config/yaml//modules/remote-state"
-  version = "1.5.0"
-
-  component = "network"
-
-  context = module.this.context
+variable "name" {
+  description = "The name of the load-balancer"
+  type        = string
+  default     = "load-balancer"
 }
 
-output "vpc_id" {
-  description = "Mock VPC ID"
-  value       = module.network.outputs.vpc_id
+resource "random_id" "id" {
+  byte_length = 8
+}
+
+locals {
+  mock_lb_id = "${var.name}-${random_id.id.hex}"
 }
 
 output "lb_id" {
-  description = "Mock load balancer ID"
-  value       = module.this.id
+  value = local.mock_lb_id
 }
