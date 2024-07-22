@@ -2,7 +2,7 @@ settings:
   pro:
     enabled: true
     pull_request:
-      - trigger: [feature-branch]
+      - trigger: [feature-branch] # Anytime a PR is opened, synchronized, or reopened
         workflows:
           atmos-terraform-plan.yaml: # run the atmos-terraform-plan.yaml workflow via dispatch
             inputs: # with the following inputs
