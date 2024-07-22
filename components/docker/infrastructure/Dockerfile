@@ -2,7 +2,7 @@
 ARG GEODESIC_VERSION=3.0.0
 ARG GEODESIC_OS=debian
 # https://github.com/cloudposse/atmos
-ARG ATMOS_VERSION=1.80.0
+ARG ATMOS_VERSION=1.84.0
 # This should match the version set in .github/workflows/auto-format.yaml
 ARG TF_1_VERSION=1.5.7
 
@@ -53,7 +53,7 @@ ENV DOCKER_IMAGE="${NAMESPACE}/infra"
 ENV DOCKER_TAG="latest"
 
 # Default AWS_PROFILE
-ENV AWS_PROFILE="cptest-core-gbl-identity"
+ENV AWS_PROFILE="cptest-identity"
 # This sets the default AWS_CONFIG to be used after signing in with Leapp.
 # Once logged in, this config file gives you access to all the other teams
 # and roles (if you are authorized for access).

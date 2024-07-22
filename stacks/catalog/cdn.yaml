@@ -5,5 +5,8 @@ components:
         depends_on:
           1:
             component: object-storage
+          2:
+            component: frontend
       vars:
         storage_id: '{{ (atmos.Component "object-storage" .stack).outputs.storage_id }}'
+        frontend_id: '{{ (atmos.Component "frontend" .stack).outputs.frontend_id }}'

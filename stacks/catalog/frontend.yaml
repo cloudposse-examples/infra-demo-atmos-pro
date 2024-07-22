@@ -4,12 +4,9 @@ components:
       settings:
         depends_on:
           1:
-            component: cluster
+            component: api
           2:
-            component: database
-          3:
             component: cache
       vars:
-        cluster_id: '{{ (atmos.Component "cluster" .stack).outputs.cluster_id }}'
-        database_id: '{{ (atmos.Component "database" .stack).outputs.database_id }}'
+        api_id: '{{ (atmos.Component "api" .stack).outputs.api_id }}'
         cache_id: '{{ (atmos.Component "cache" .stack).outputs.cache_id }}'
