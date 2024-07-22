@@ -1,4 +1,5 @@
 components:
   terraform:
     object-storage:
-      vars: {}
+      vars:
+        name: testing 12
