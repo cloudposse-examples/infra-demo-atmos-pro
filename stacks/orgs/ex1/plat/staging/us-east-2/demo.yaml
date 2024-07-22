@@ -5,14 +5,11 @@ import:
 
   # Mock components
   - catalog/vpc
-
-  - catalog/database
-
   - catalog/load-balancer
   - catalog/cluster
-
-  - catalog/object-storage
-  - catalog/cdn
+  - catalog/database
+  - catalog/api
   - catalog/cache
-
+  - catalog/object-storage
   - catalog/frontend
+  - catalog/cdn

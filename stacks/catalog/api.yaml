@@ -1,0 +1,12 @@
+components:
+  terraform:
+    api:
+      settings:
+        depends_on:
+          1:
+            component: database
+          2:
+            component: cluster
+      vars:
+        database_id: '{{ (atmos.Component "database" .stack).outputs.database_id }}'
+        cluster_id: '{{ (atmos.Component "cluster" .stack).outputs.cluster_id }}'
