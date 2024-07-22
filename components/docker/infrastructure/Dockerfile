@@ -53,7 +53,7 @@ ENV DOCKER_IMAGE="${NAMESPACE}/infra"
 ENV DOCKER_TAG="latest"
 
 # Default AWS_PROFILE
-ENV AWS_PROFILE="cptest-core-gbl-identity"
+ENV AWS_PROFILE="cptest-identity"
 # This sets the default AWS_CONFIG to be used after signing in with Leapp.
 # Once logged in, this config file gives you access to all the other teams
 # and roles (if you are authorized for access).
