@@ -14,3 +14,10 @@ settings:
             inputs:
               component: "{{ .atmos_component }}"
               stack: "{{ .atmos_stack }}"
+    release:
+      - trigger: [published]
+        workflows:
+          atmos-terraform-apply.yaml:
+            inputs:
+              component: "{{ .atmos_component }}"
+              stack: "{{ .atmos_stack }}"
