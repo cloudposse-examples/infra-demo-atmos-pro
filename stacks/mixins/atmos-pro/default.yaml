@@ -15,7 +15,7 @@ settings:
               component: "{{ .atmos_component }}"
               stack: "{{ .atmos_stack }}"
     release:
-      - trigger: [published]
+      - trigger: [released]
         workflows:
           atmos-terraform-apply.yaml:
             inputs:
