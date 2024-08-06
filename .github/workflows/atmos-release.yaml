@@ -39,14 +39,13 @@ jobs:
 
       - name: Gather Affected Stacks
         id: affected
-        uses: cloudposse/github-action-atmos-affected-stacks@feature/add-atmos-pro-upload
+        uses: cloudposse/github-action-atmos-affected-stacks@v3
         env:
           ATMOS_PRO_TOKEN: ${{ secrets.ATMOS_PRO_TOKEN }}
         with:
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
           atmos-pro-upload: true
-          atmos-pro-base-url: https://ngrok.mattcalhoun.com
           atmos-pro-token: ${{ secrets.ATMOS_PRO_TOKEN }}
           base-ref: ${{ steps.get_latest_release_sha.outputs.commit_sha }}
           head-ref: ${{ github.sha  }}
