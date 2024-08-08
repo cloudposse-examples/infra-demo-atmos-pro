@@ -1,4 +1,5 @@
 components:
   terraform:
     vpc:
-      vars: {}
+      vars:
+        foo: bar

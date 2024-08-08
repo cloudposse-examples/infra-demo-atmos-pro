@@ -23,7 +23,7 @@ components:
             enabled: true
             abort_incomplete_multipart_upload_days: 90
             filter_and:
-              prefix: ""
+              prefix: "foo"
               tags: {}
             # Move to Glacier after 2 years
             transition:
