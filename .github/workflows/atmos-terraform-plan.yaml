@@ -31,7 +31,7 @@ jobs:
       - "ubuntu-latest"
     steps:
       - name: Plan Atmos Component
-        uses: cloudposse/github-action-atmos-terraform-plan@v2
+        uses: cloudposse/github-action-atmos-terraform-plan@feature/DEV-2465-support-stack-locking
         with:
           component: ${{ inputs.component }}
           stack: ${{ inputs.stack }}
