@@ -2,4 +2,5 @@ components:
   terraform:
     object-storage:
       vars:
-        name: testing 26
+        name: testing 27
+
