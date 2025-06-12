@@ -1,76 +1,61 @@
-name: 👽 Atmos Terraform Apply
+name: 👽 Atmos Pro Terraform Apply
 run-name: apply ${{ inputs.component }}/${{ inputs.stack }}/${{ inputs.atmos_pro_run_id}}
 
 on:
   workflow_dispatch:
     inputs:
-      component:
-        description: "Atmos Component"
-        type: string
-      stack:
-        description: "Atmos Stack"
+      atmos_pro_run_id:
+        description: "Atmos Pro Run ID"
         type: string
       sha:
         description: "Commit SHA"
         type: string
-      environment:
-        description: "GitHub environment"
+      component:
+        description: "Component"
+        required: true
         type: string
-      atmos_pro_run_id:
-        description: "Atmos Pro Run ID"
+      stack:
+        description: "Stack"
+        required: true
+        type: string
+      github_environment:
+        description: "GitHub Environment"
+        required: true
         type: string
 
+# Avoid running the same stack in parallel mode (from different workflows)
+# This applied to across workflows to both plan and apply
 concurrency:
-  group: "${{ inputs.component }}-${{ inputs.stack }}"
-  cancel-in-progress: false # Do not cancel apply in progress to avoid locking state
+  group: "${{ inputs.stack }}-${{ inputs.component }}"
+  cancel-in-progress: false
 
 permissions:
-  id-token: write
-  contents: read
+  id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
 
-jobs:
-  plan:
-    name: Plan ${{ inputs.stack }} ${{ inputs.component }}
+jobs: 
+  atmos-apply:
+    name: ${{ inputs.component }}-${{ inputs.stack }}
+
+    # The GitHub environment is defined in Atmos Pro settings.
+    # Typically this is <tenant>-<stage>
+    environment: ${{ inputs.github_environment }}
+
     runs-on:
       - "ubuntu-latest"
+
     steps:
-      # If retrieve action is moved, then we can delete this
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: unfor19/install-aws-cli-action@v1
 
-      - name: Retrieve Plan
-        uses: ./.github/actions/retrieve-plan
-        with:
-          component: ${{ inputs.component }}
-          stack: ${{ inputs.stack }}
-          sha: ${{ inputs.sha }}
-          atmos-version: ${{ vars.ATMOS_VERSION }}
-          atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
-
-      # Plan now if the plan doesnt already exist
-      - name: Plan Atmos Component
-        if: ${{ !steps.retrieve-plan.outputs.exists }}
-        uses: cloudposse/github-action-atmos-terraform-plan@v2
-        with:
-          component: ${{ inputs.component }}
-          stack: ${{ inputs.stack }}
-          sha: ${{ inputs.sha }}
-          atmos-version: ${{ vars.ATMOS_VERSION }}
-          atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
-
-  apply:
-    name: Apply ${{ inputs.stack }} ${{ inputs.component }}
-    environment: ${{ inputs.environment }}
-    runs-on:
-      - "ubuntu-latest"
-    needs:
-      - plan
-    steps:
       - name: Apply Atmos Component
-        uses: cloudposse/github-action-atmos-terraform-apply@v2
+        uses: cloudposse/github-action-atmos-terraform-apply@v4
         with:
+          # Atmos Pro args
           component: ${{ inputs.component }}
           stack: ${{ inputs.stack }}
           sha: ${{ inputs.sha }}
+          # Atmos required configuration
           atmos-version: ${{ vars.ATMOS_VERSION }}
           atmos-config-path: ${{ vars.ATMOS_CONFIG_PATH }}
+          # Custom configuration
+          debug: false
