@@ -144,8 +144,8 @@ integrations:
       infracost-enabled: "False"
       artifact-storage:
         region: "us-east-1"
-        bucket: "atmos-pro-example-advanced-tfstate"
-        table: "atmos-pro-example-advanced-tfstate"
+        bucket: "atmos-pro-example-advanced-planfiles"
+        table: "atmos-pro-example-advanced-planfiles"
         role: "arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions"
       role:
         plan: "arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions"
