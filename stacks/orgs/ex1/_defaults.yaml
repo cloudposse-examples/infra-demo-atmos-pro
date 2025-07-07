@@ -29,7 +29,7 @@ terraform:
     s3:
       bucket: atmos-pro-example-advanced-tfstate
       dynamodb_table: atmos-pro-example-advanced-tfstate
-      role_arn: null
+      role_arn: ""
       # role_arn: arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions
       encrypt: true
       key: terraform.tfstate
@@ -39,7 +39,7 @@ terraform:
     s3:
       # This ensures that remote-state uses the role_arn even when
       # the backend has role_arn overridden to be set to `null`.
-      role_arn: null
+      role_arn: ""
       # role_arn: arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions
 
   settings:
