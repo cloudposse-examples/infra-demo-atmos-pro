@@ -143,10 +143,10 @@ integrations:
       terraform-version: "1.5.7"
       infracost-enabled: "False"
       artifact-storage:
-        region: "us-east-2"
-        bucket: "ex1-core-use2-auto-gitops-plan-storage"
-        table: "ex1-core-use2-auto-gitops-plan-storage"
-        role: "arn:aws:iam::461333128641:role/ex1-core-use2-auto-gha-iam-gitops"
+        region: "us-east-1"
+        bucket: "atmos-pro-example-advanced-tfstate"
+        table: "atmos-pro-example-advanced-tfstate"
+        role: "arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions"
       role:
         plan: "arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions"
         apply: "arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions"
