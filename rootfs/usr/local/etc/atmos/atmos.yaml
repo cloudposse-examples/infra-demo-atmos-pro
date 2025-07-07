@@ -144,12 +144,12 @@ integrations:
       infracost-enabled: "False"
       artifact-storage:
         region: "us-east-1"
-        bucket: "atmos-pro-example-advanced-planfiles"
-        table: "atmos-pro-example-advanced-planfiles"
-        role: "arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions"
+        bucket: "atmos-pro-ex1-tfplan"
+        table: "atmos-pro-ex1-tfplan"
+        role: "arn:aws:iam::630114703016:role/atmos-pro-ex1-github-actions"
       role:
-        plan: "arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions"
-        apply: "arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions"
+        plan: "arn:aws:iam::630114703016:role/atmos-pro-ex1-github-actions"
+        apply: "arn:aws:iam::630114703016:role/atmos-pro-ex1-github-actions"
       matrix:
         sort-by: |-
           .stack_slug

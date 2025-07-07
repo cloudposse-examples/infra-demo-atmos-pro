@@ -23,24 +23,19 @@ terraform:
           - environment
           - stage
 
-  # Valid options: s3, remote, vault, etc.
   backend_type: s3
   backend:
     s3:
-      bucket: atmos-pro-example-advanced-tfstate
-      dynamodb_table: atmos-pro-example-advanced-tfstate
+      bucket: atmos-pro-ex1-tfstate
+      dynamodb_table: atmos-pro-ex1-tfstate
       role_arn: ""
-      # role_arn: arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions
       encrypt: true
       key: terraform.tfstate
       acl: bucket-owner-full-control
       region: us-east-1
   remote_state_backend:
     s3:
-      # This ensures that remote-state uses the role_arn even when
-      # the backend has role_arn overridden to be set to `null`.
       role_arn: ""
-      # role_arn: arn:aws:iam::630114703016:role/atmos-pro-example-advanced-github-actions
 
   settings:
     github:
