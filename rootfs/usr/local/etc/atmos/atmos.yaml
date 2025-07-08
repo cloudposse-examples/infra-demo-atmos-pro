@@ -143,13 +143,13 @@ integrations:
       terraform-version: "1.5.7"
       infracost-enabled: "False"
       artifact-storage:
-        region: "us-east-2"
-        bucket: "ex1-core-use2-auto-gitops-plan-storage"
-        table: "ex1-core-use2-auto-gitops-plan-storage"
-        role: "arn:aws:iam::461333128641:role/ex1-core-use2-auto-gha-iam-gitops"
+        region: "us-east-1"
+        bucket: "atmos-pro-ex1-tfplan"
+        table: "atmos-pro-ex1-tfplan"
+        role: "arn:aws:iam::630114703016:role/atmos-pro-ex1-github-actions"
       role:
-        plan: "arn:aws:iam::582055374050:role/cptest-core-gbl-identity-planners"
-        apply: "arn:aws:iam::582055374050:role/cptest-core-gbl-identity-planners"
+        plan: "arn:aws:iam::630114703016:role/atmos-pro-ex1-github-actions"
+        apply: "arn:aws:iam::630114703016:role/atmos-pro-ex1-github-actions"
       matrix:
         sort-by: |-
           .stack_slug
@@ -157,19 +157,10 @@ integrations:
           .stack_slug | split("-") | [.[0], .[2]] | join("-")
 
 
-# `Go` templates in Atmos manifests
-# https://atmos.tools/core-concepts/stacks/templates
-# https://pkg.go.dev/text/template
 templates:
   settings:
-    enabled: true
-    evaluations: 1
-    # https://masterminds.github.io/sprig
+    enabled: false
     sprig:
-      enabled: true
-    # https://docs.gomplate.ca
+      enabled: false
     gomplate:
-      enabled: true
-      timeout: 5
-      # https://docs.gomplate.ca/datasources
-      datasources: {}
+      enabled: false

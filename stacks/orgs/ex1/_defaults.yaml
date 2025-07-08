@@ -23,22 +23,19 @@ terraform:
           - environment
           - stage
 
-  # Valid options: s3, remote, vault, etc.
   backend_type: s3
   backend:
     s3:
-      bucket: cptest-core-ue2-root-tfstate-ex1
-      dynamodb_table: cptest-core-ue2-root-tfstate-ex1-lock
-      role_arn: arn:aws:iam::822777368227:role/cptest-core-gbl-root-tfstate-ex1
+      bucket: atmos-pro-ex1-tfstate
+      dynamodb_table: atmos-pro-ex1-tfstate
+      role_arn: ""
       encrypt: true
       key: terraform.tfstate
       acl: bucket-owner-full-control
-      region: us-east-2
+      region: us-east-1
   remote_state_backend:
     s3:
-      # This ensures that remote-state uses the role_arn even when
-      # the backend has role_arn overridden to be set to `null`.
-      role_arn: arn:aws:iam::822777368227:role/cptest-core-gbl-root-tfstate-ex1
+      role_arn: ""
 
   settings:
     github:
