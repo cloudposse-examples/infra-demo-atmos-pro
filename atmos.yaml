@@ -77,3 +77,16 @@ templates:
       enabled: true
     gomplate:
       enabled: true
+
+commands:
+  - name: cloudformation
+    description: "Deploy CloudFormation stacks"
+    arguments:
+      - name: stack
+        description: "Name of the CloudFormation stack"
+        shorthand: "s"
+        required: false
+        default: "atmos-pro-ex2"
+    steps:
+      - "curl -o /tmp/terraform-backend.yaml https://cplive-core-ue2-public-cloudformation.s3.amazonaws.com/aws-cloudformation-terraform-backend.yaml"
+      - "aws cloudformation deploy --stack-name {{ .Arguments.stack }} --template-file /tmp/terraform-backend.yaml --capabilities CAPABILITY_NAMED_IAM --no-fail-on-empty-changeset --parameter-overrides GitHubOrg=cloudposse-examples CreateOIDCProvider=false"
