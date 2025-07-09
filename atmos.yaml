@@ -40,11 +40,6 @@ stacks:
 workflows:
   base_path: "stacks/workflows"
 
-integrations:
-  github:
-    gitops:
-      opentofu-version: 1.7.7
-
 docs:
   generate:
     readme:
@@ -56,6 +51,29 @@ docs:
       input:
         - "README.yaml"
 
+integrations:
+  github:
+    gitops:
+      opentofu-version: 1.7.7
+      infracost-enabled: "False"
+      artifact-storage:
+        region: "us-east-1"
+        bucket: "atmos-pro-ex1-tfplan"
+        table: "atmos-pro-ex1-tfplan"
+        role: "arn:aws:iam::630114703016:role/atmos-pro-ex1-github-actions"
+      role:
+        plan: "arn:aws:iam::630114703016:role/atmos-pro-ex1-github-actions"
+        apply: "arn:aws:iam::630114703016:role/atmos-pro-ex1-github-actions"
+      matrix:
+        sort-by: |-
+          .stack_slug
+        group-by: |-
+          .stack_slug | split("-") | [.[0], .[2]] | join("-")
+
 templates:
   settings:
     enabled: true
+    sprig:
+      enabled: true
+    gomplate:
+      enabled: true
