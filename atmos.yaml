@@ -17,12 +17,12 @@
 # are considered paths relative to `base_path`.
 base_path: ""
 
-aliases:
-  tofu: terraform
+#aliases:
+#  tofu: terraform
 
 components:
   terraform:
-    command: "tofu" # Use the `tofu` command when calling "terraform" in Atmos.
+    #command: "tofu" # Use the `tofu` command when calling "terraform" in Atmos.
     base_path: "components/terraform"
     apply_auto_approve: false
     deploy_run_init: true
