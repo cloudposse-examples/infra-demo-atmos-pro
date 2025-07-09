@@ -28,14 +28,14 @@ terraform:
     s3:
       bucket: atmos-pro-ex2-tfstate
       dynamodb_table: atmos-pro-ex2-tfstate
-      role_arn: ""
+      role_arn: null
       encrypt: true
       key: terraform.tfstate
       acl: bucket-owner-full-control
       region: us-east-1
   remote_state_backend:
     s3:
-      role_arn: ""
+      role_arn: null
 
   settings:
     github:
