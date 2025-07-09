@@ -73,7 +73,7 @@ integrations:
 
 templates:
   settings:
-    enabled: true
+    enabled: false
     sprig:
       enabled: false
     gomplate:
