@@ -1,0 +1,61 @@
+# CLI config is loaded from the following locations (from lowest to highest priority):
+# system dir (`/usr/local/etc/atmos` on Linux, `%LOCALAPPDATA%/atmos` on Windows)
+# home dir (~/.atmos)
+# current directory
+# ENV vars
+# Command-line arguments
+#
+# It supports POSIX-style Globs for file names/paths (double-star `**` is supported)
+# https://en.wikipedia.org/wiki/Glob_(programming)
+
+# Base path for components, stacks and workflows configurations.
+# Can also be set using `ATMOS_BASE_PATH` ENV var, or `--base-path` command-line argument.
+# Supports both absolute and relative paths.
+# If not provided or is an empty string, `components.terraform.base_path`, `components.helmfile.base_path`, `stacks.base_path` and `workflows.base_path`
+# are independent settings (supporting both absolute and relative paths).
+# If `base_path` is provided, `components.terraform.base_path`, `components.helmfile.base_path`, `stacks.base_path` and `workflows.base_path`
+# are considered paths relative to `base_path`.
+base_path: ""
+
+aliases:
+  tofu: terraform
+
+components:
+  terraform:
+    command: "tofu" # Use the `tofu` command when calling "terraform" in Atmos.
+    base_path: "components/terraform"
+    apply_auto_approve: false
+    deploy_run_init: true
+    init_run_reconfigure: true
+    auto_generate_backend_file: true
+
+stacks:
+  base_path: "stacks"
+  included_paths:
+    - "orgs/**/*"
+  excluded_paths:
+    - "**/_defaults.yaml"
+  name_pattern: "{tenant}-{environment}-{stage}"
+
+workflows:
+  base_path: "stacks/workflows"
+
+integrations:
+  github:
+    gitops:
+      opentofu-version: 1.7.7
+
+docs:
+  generate:
+    readme:
+      base-dir: .
+      template: ".github/README.md.gotmpl"
+      output: ".github/README.md"
+      terraform:
+        enabled: false
+      input:
+        - "README.yaml"
+
+templates:
+  settings:
+    enabled: true
