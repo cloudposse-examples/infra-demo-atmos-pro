@@ -54,7 +54,8 @@ docs:
 integrations:
   github:
     gitops:
-      opentofu-version: 1.10.0
+      #opentofu-version: 1.10.0
+      terraform-version: 1.5.7
       infracost-enabled: "False"
       artifact-storage:
         region: "us-east-1"
