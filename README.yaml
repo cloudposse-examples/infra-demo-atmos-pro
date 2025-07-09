@@ -25,29 +25,30 @@ usage: |-
   </details>
 
   <details>
-  <summary><strong>Prerequisites for Using Atmos Pro (Advanced Example)</strong></summary>
+  <summary><strong>Required Prerequisites for Using Atmos Pro (Advanced Example)</strong></summary>
 
-  The following prerequisites are **not required** to run this demo example but are essential for using **Atmos Pro** effectively with real infrastructure:
+  The following prerequisites are **required** to use this advanced example with real infrastructure:
 
-  #### 1. GitHub OIDC Integration
-  To use GitHub Actions securely with Terraform, you'll need to set up **GitHub OIDC** with your cloud provider of choice.  
-  > ⚠️ This example works without GitHub OIDC, but you'll need it in practice for GitHub Actions to authenticate properly with your cloud provider.
+  #### Required Infrastructure Components
 
-  For more on setting this up with our reference architecture, please see [How to use GitHub OIDC with AWS](https://docs.cloudposse.com/layers/github-actions/github-oidc-with-aws/).
+  This advanced example requires three infrastructure components to be deployed:
 
-  #### 2. Terraform Plan Storage Backend
-  This example has plan storage **disabled** for simplicity. However, we recommend enabling it once the basics are working.
-  - Atmos Pro supports plan storage on **AWS**, **GCP**, and **Azure**.
-  - Plan storage lets you reuse the `.tfplan` file generated during the `plan` phase in the `apply` phase—this is a Terraform best practice.
+  1. **Terraform State Backend** - Remote state storage (S3 bucket and DynamoDB table for state locking)
+  2. **Terraform Plan Storage Backend** - Plan file storage (S3 bucket and DynamoDB table for storing Terraform plans between planning and applying phases)
+  3. **GitHub OIDC Integration** - Secure authentication (GitHub OIDC provider and IAM roles for GitHub Actions to authenticate with AWS)
 
-  For more on setting this up with our reference architecture, please see [Setup GitOps with GitHub Actions](https://docs.cloudposse.com/layers/gitops/setup/).
+  #### Deployment Options
 
-  #### 3. Terraform State Backend
-  The example uses a **local state backend**, which is fine for demos without real cloud resources.
-  - In production, you should configure a **remote state backend**.
-  - Cloud Posse provides a reusable component for AWS. For GCP, Azure, etc., use your preferred backend configuration.
+  You can deploy these infrastructure components using one of the following approaches:
 
-  For more on setting this up with our reference architecture, please see [](https://docs.cloudposse.com/layers/accounts/initialize-tfstate/).
+  **Option A: Use our reference architecture**
+  - For Terraform state backend setup: [Initialize Terraform State Backend](https://docs.cloudposse.com/layers/accounts/initialize-tfstate/)
+  - For plan storage setup: [Setup GitOps with GitHub Actions](https://docs.cloudposse.com/layers/gitops/setup/)
+  - For GitHub OIDC setup: [How to use GitHub OIDC with AWS](https://docs.cloudposse.com/layers/github-actions/github-oidc-with-aws/)
+
+  **Option B: Use the CloudFormation template**
+  - Deploy all three components at once using the [CloudFormation template for Terraform backend](https://github.com/cloudposse/aws-cloudformation-terraform-backend)
+  - This template creates the S3 buckets, DynamoDB tables, and GitHub OIDC provider in a single deployment
 
   </details>
 
@@ -58,10 +59,13 @@ usage: |-
   1. **Fork this repository**
      - Click the "Fork" button in the top right corner of this repository on GitHub
 
-  2. **Install the Atmos Pro GitHub App**
+  2. **Deploy prerequisites**
+     - See the "Required Prerequisites for Using Atmos Pro (Advanced Example)" section above for deployment options
+
+  3. **Install the Atmos Pro GitHub App**
      - Follow the [Atmos Pro documentation](https://atmos-pro.com/docs) to sign up for Atmos Pro and install the GitHub App in your forked repository.
 
-  3. **Set up GitHub Variables**
+  4. **Set up GitHub Variables**
      - `ATMOS_PRO_WORKSPACE_ID` - Your Atmos Pro workspace ID. [Find your workspace ID](https://atmos-pro.com/docs/configure/workspaces).
      - `ATMOS_VERSION` - The version of Atmos to use (e.g., `1.181.0`)
      - `ATMOS_CONFIG_PATH` - Path to your Atmos configuration file (e.g., `atmos.yaml`)
