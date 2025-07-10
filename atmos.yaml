@@ -54,7 +54,7 @@ docs:
 integrations:
   github:
     gitops:
-      opentofu-version: 1.10.0
+      opentofu-version: 1.10.1
       infracost-enabled: "False"
       artifact-storage:
         region: "us-east-1"
