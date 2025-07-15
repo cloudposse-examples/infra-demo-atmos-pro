@@ -22,8 +22,13 @@ For comprehensive documentation and advanced features, visit [atmos-pro.com/docs
 In order to trigger workflows from this GitHub repository, the Atmos Pro GitHub App will execute `atmos` on your behalf
 in GitHub Actions. You do not need to install anything locally.
 
-However if you wish to execute `atmos` locally, you will need to install Atmos. For installation instructions, visit the
-[Atmos installation guide](https://atmos.tools/install).
+However if you wish to execute `atmos` locally, you will need to install:
+
+- **Atmos** - For installation instructions, visit the [Atmos installation guide](https://atmos.tools/install)
+- **Terraform or OpenTofu** - Atmos requires either Terraform or OpenTofu to be installed locally. For installation
+  instructions:
+  - Terraform: [Install Terraform](https://developer.hashicorp.com/terraform/downloads)
+  - OpenTofu: [Install OpenTofu](https://opentofu.org/docs/intro/install/)
 
 </details>
 
