@@ -17,7 +17,7 @@ For comprehensive documentation and advanced features, visit [atmos-pro.com/docs
 ### Installation
 
 <details>
-<summary><strong>Prerequisites for Using Atmos CLI</strong></summary>
+<summary><strong>Prerequisites for Running Atmos Locally</strong></summary>
 
 In order to trigger workflows from this GitHub repository, the Atmos Pro GitHub App will execute `atmos` on your behalf
 in GitHub Actions. You do not need to install anything locally.
@@ -81,14 +81,15 @@ Follow these steps to get started with this Atmos Pro example:
 
 3. **Install the Atmos Pro GitHub App**
 
-   - Follow the [Atmos Pro documentation](https://atmos-pro.com/docs) to sign up for Atmos Pro and install the GitHub
+   - Follow the [Atmos Pro documentation](https://atmos-pro.com/install) to sign up for Atmos Pro and install the GitHub
      App in your forked repository.
 
 4. **Set up GitHub Variables**
 
    - `ATMOS_PRO_WORKSPACE_ID` - Your Atmos Pro workspace ID.
      [Find your workspace ID](https://atmos-pro.com/docs/configure/workspaces).
-   - `ATMOS_VERSION` - The version of Atmos to use (e.g., `1.181.0`)
+   - `ATMOS_VERSION` - The version of Atmos to use (e.g., `1.181.0`,
+     [see releases](https://github.com/cloudposse/atmos/releases))
    - `ATMOS_CONFIG_PATH` - Path to your Atmos configuration file (e.g., `atmos.yaml`)
 
    For more information about GitHub variables, see the
@@ -211,8 +212,8 @@ This command generates the README.md file from the README.yaml configuration.
 │   ├── README.md              # Generated README for GitHub
 │   ├── README.md.gotmpl       # Template for README generation
 │   ├── workflows/             # GitHub Actions workflows
-│   │   ├── atmos-pro.yaml                    # Main Atmos Pro workflow
-│   │   ├── atmos-release.yaml                # Release workflow
+│   │   ├── atmos-pro.yaml                   # Main Atmos Pro workflow
+│   │   ├── atmos-release.yaml               # Release workflow
 │   │   ├── atmos-terraform-apply.yaml       # Dispatched workflow for applying Terraform changes
 │   │   ├── atmos-terraform-plan.yaml        # Dispatched workflow for planning Terraform changes
 │   │   ├── draft-release.yaml               # Draft release workflow
