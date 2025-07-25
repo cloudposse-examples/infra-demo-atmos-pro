@@ -51,17 +51,23 @@ This advanced example requires three infrastructure components to be deployed:
 
 You can deploy these infrastructure components using one of the following approaches:
 
-**Option A: Use our reference architecture**
+**Option A: Use Terraform Components**
 
-- For Terraform state backend setup:
+Our reference architecture documentation for AWS provides instructions for using Terraform to manage the S3 backend.
+
+- For the Terraform state backend setup, see:
   [Initialize Terraform State Backend](https://docs.cloudposse.com/layers/accounts/initialize-tfstate/)
-- For plan storage setup: [Setup GitOps with GitHub Actions](https://docs.cloudposse.com/layers/gitops/setup/)
-- For GitHub OIDC setup:
+- For the plan storage setup, see:
+  [Setup GitOps with GitHub Actions](https://docs.cloudposse.com/layers/gitops/setup-gitops-with-github-actions/)
+- For the GitHub OIDC setup, see:
   [How to use GitHub OIDC with AWS](https://docs.cloudposse.com/layers/github-actions/github-oidc-with-aws/)
 
 **Option B: Use the CloudFormation template**
 
-- Deploy all three components at once using the
+CloudFormation is a practical, Infrastructure as Code Alternative for bootstrapping the Terraform backend. With our
+CloudFormation template, you can:
+
+- Deploy all three dependencies at once using the
   [CloudFormation template for Terraform backend](https://github.com/cloudposse/aws-cloudformation-terraform-backend)
 - This template creates the S3 buckets, DynamoDB tables, and GitHub OIDC provider in a single deployment
 
